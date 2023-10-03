@@ -55,7 +55,7 @@ class RCon {
 
 	// Prefix the packet size
 	$data = pack("V",strlen($data)).$data;
-	$handle = fopen("C:/source/test.txt", "r+");
+	$handle = fopen("C:/source/test.txt", "r+b");
 	// Send packet
 	fwrite($handle,$data,strlen($data));
 
@@ -67,7 +67,7 @@ class RCon {
 	//Declare the return array
 	$retarray = array();
 	//Fetch the packet size
-	$handle = fopen("C:/source/test.txt", "r+");
+	$handle = fopen("C:/source/test.txt", "r+b");
 	
 	while ($size = @fread($handle,4)) {
 	    $size = unpack('V1Size',$size);
