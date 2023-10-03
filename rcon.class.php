@@ -14,11 +14,11 @@ define("SERVERDATA_EXECCOMMAND",2);
 define("SERVERDATA_AUTH",3);
 
 class RCon {
-    var $Password;
-    var $Host;
-    var $Port = 27015;
-    var $_Sock;
-    var $_Id = 0;
+    public $Password;
+    public $Host;
+    public $Port = 27015;
+    public $_Sock;
+    public $_Id = 0;
 
     function RCon ($Host,$Port,$Password) {
 	$this->Password = $Password;
