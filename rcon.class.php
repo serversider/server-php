@@ -19,14 +19,16 @@ class RCon {
     public $Port = 27015;
     public $_Sock;
     public $_Id = 0;
+    public $Socket;
 
     function RCon ($Host,$Port,$Password) {
 	$this->Password = $Password;
 	$this->Host = $Host;
 	$this->Port = $Port;
-	$this->_Sock = @fsockopen($this->Host,$this->Port, $errno, $errstr, 30) or
-	    die("Unable to open socket: $errstr ($errno)\n");
-	$this->_Set_Timeout($this->_Sock,2,500);
+	$this->Socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+	$this->_Sock = socket_connect($this->Socket, $this->Host,$this->Port) or
+	    die("Unable to open socket: \n");
+	# $this->_Set_Timeout($this->_Sock,2,500);
     }
     
     function Auth () {
