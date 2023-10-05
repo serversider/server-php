@@ -1,13 +1,9 @@
 <?php
 /*
-	Basic CS:S Rcon class by Freman.  (V1.00)
+	Basic CS 1.6 Rcon
     ----------------------------------------------
-    Ok, it's a completely working class now with with multi-packet responses
-
     Contact: printf("%s%s%s%s%s%s%s%s%s%d%s%s%s","rc","on",chr(46),"cl","ass",chr(64),"pri","ya",chr(46),2,"y",chr(46),"net")
 
-    Behaviour I've noticed:
-	rcon is not returning the packet id.
 */
 
 define("SERVERDATA_EXECCOMMAND",2);
@@ -114,8 +110,6 @@ class RCon {
 
 	$ret = $this->Read();
 
-	//ATM: Source servers don't return the request id, but if they fix this the code below should read as
-	// return $ret[$this->_Id]['S1'];
 	return $ret[$this->_Id]['S1'];
     }
 }
